@@ -6,6 +6,7 @@ import {selectUI, UI_ACTION_CREATORS} from "../../redux/features/ui/ui-slice";
 import NavbarLink from "../shared/navbar-link";
 import {DarkModeOutlined, FavoriteBorderOutlined, LightModeOutlined, MailOutline} from "@mui/icons-material";
 import Profile from "../shared/profile";
+import {Link} from "react-router-dom";
 
 const DesktopHeader = () => {
     const {theme} = useSelector(selectUI);
@@ -16,18 +17,22 @@ const DesktopHeader = () => {
                 <Grid container={true} justifyContent="space-between" alignItems="center">
                     <Grid item={true} xs="auto">
                         {theme === "dark" && (
-                            <CardMedia
-                                component="img"
-                                sx={{height: 70, objectFit: "contain", width: 150}}
-                                src={whiteLogo}
-                            />
+                            <Link to="/" style={{textDecoration: "none"}}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{height: 70, objectFit: "contain", width: 150}}
+                                    src={whiteLogo}
+                                />
+                            </Link>
                         )}
                         {theme === "light" && (
-                            <CardMedia
-                                component="img"
-                                sx={{height: 70, objectFit: "contain", width: 150}}
-                                src={coloredLogo}
-                            />
+                            <Link to="/" style={{textDecoration: "none"}}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{height: 70, objectFit: "contain", width: 150}}
+                                    src={coloredLogo}
+                                />
+                            </Link>
                         )}
 
                     </Grid>
@@ -65,42 +70,39 @@ const DesktopHeader = () => {
                                 }}
                             />
                             {theme === 'dark' && (
-                                <Box>
-                                    <LightModeOutlined
-                                        sx={{
-                                            borderWidth: 1,
-                                            borderColor: "icon.border",
-                                            borderStyle: "solid",
-                                            backgroundColor: "icon.background",
-                                            fontSize: 32,
-                                            padding: 1,
-                                            color: "icon.secondary",
-                                            borderRadius: "100%",
-                                            cursor: "pointer"
-                                        }}
-                                        onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
-                                    />
-                                </Box>
+
+                                <LightModeOutlined
+                                    sx={{
+                                        borderWidth: 1,
+                                        borderColor: "icon.border",
+                                        borderStyle: "solid",
+                                        backgroundColor: "icon.background",
+                                        fontSize: 32,
+                                        padding: 1,
+                                        color: "icon.secondary",
+                                        borderRadius: "100%",
+                                        cursor: "pointer"
+                                    }}
+                                    onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
+                                />
                             )}
                             {theme === 'light' && (
-                                <Box>
-                                    <DarkModeOutlined
-                                        sx={{
-                                            padding: 1,
-                                            fontSize: 32,
-                                            borderWidth: 1,
-                                            borderStyle: "solid",
-                                            borderRadius: '30%',
-                                            borderColor: "light.secondary",
-                                            color: "secondary.main",
-                                            backgroundColor: "light.secondary",
-                                            cursor: "pointer"
-                                        }}
-                                        onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
-                                    />
-                                </Box>
+                                <DarkModeOutlined
+                                    sx={{
+                                        padding: 1,
+                                        fontSize: 32,
+                                        borderWidth: 1,
+                                        borderStyle: "solid",
+                                        borderRadius: '30%',
+                                        borderColor: "light.secondary",
+                                        color: "secondary.main",
+                                        backgroundColor: "light.secondary",
+                                        cursor: "pointer"
+                                    }}
+                                    onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
+                                />
                             )}
-                            <Profile image={<Avatar sx={{width: 40, height: 40}}/>} name="Inigo Lopez" />
+                            <Profile image={<Avatar sx={{width: 30, height: 30}}/>} name="Inigo Lopez"/>
                             <Select sx={{borderRadius: 0.25}} value="EN" variant="outlined" size="small">
                                 <MenuItem value="EN">En</MenuItem>
                                 <MenuItem value="DE">De</MenuItem>

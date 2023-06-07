@@ -7,7 +7,7 @@ import {
     CardMedia,
     Container,
     Grid,
-    Stack, Tabs,
+    Stack, Tab, Tabs,
     Typography,
     useMediaQuery
 } from "@mui/material";
@@ -28,18 +28,22 @@ import Process from "../../components/shared/process";
 import Service from "../../components/shared/service";
 import servicesBackground from "./../../assets/images/services-banner.jpg";
 import Guarantee from "../../components/shared/guarantee";
-import cat from "./../../assets/images/cat.jpg";
+import cat from "./../../assets/images/white-cat.jpg";
 import banner from "./../../assets/images/banner.jpg";
 import SearchForm from "../../components/shared/search-form";
+import {getFAQsByCategory} from "../../utils/lib";
+import Faq from "../../components/shared/faq";
+import {useState} from "react";
 
 const HomePage = () => {
     const sm = useMediaQuery(theme => theme.breakpoints.down("sm"));
+    const [active, setActive] = useState("owner");
     return (
         <Layout>
             <Box>
                 <Box
                     sx={{
-                        minHeight: {xs: "100vh"},
+                        minHeight: {xs: "50vh", md: "60vh", lg: "100vh"},
                         borderBottomRightRadius: {xs: 32},
                         borderBottomLeftRadius: {xs: 32},
                         backgroundImage: `url(${banner})`,
@@ -298,9 +302,11 @@ const HomePage = () => {
                             align="center"
                             variant="body2"
                             sx={{
-                                color: "text.primary",
+                                backgroundImage: "linear-gradient(to right, #af795d , #ffffff)",
+                                backgroundClip: "text",
+                                fontSize: {xs: 32, md: 44, lg: 72},
+                                color: "transparent",
                                 mb: 4,
-                                fontSize: {xs: 32, md: 48, lg: 72}
                             }}>
                             Why is it safe?
                         </Typography>
@@ -501,9 +507,9 @@ const HomePage = () => {
                                 <CardMedia
                                     component="img"
                                     sx={{
-                                        height: {xs: 150, md: "100%"},
-                                        objectFit: "cover",
-                                        width: {xs: 150, md: "100%"},
+                                        height: {xs: 150, md: "100%", lg: 150},
+                                        objectFit: {xs: "cover"},
+                                        width: {xs: 150, md: "100%", lg: 150},
                                         borderWidth: 4,
                                         borderColor: "icon.border",
                                         borderStyle: "solid",
@@ -519,7 +525,6 @@ const HomePage = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        textAlign: {xs: "left", md: "center"},
                                         color: "transparent",
                                         fontSize: {xs: 28, md: 44, lg: 60},
                                         backgroundImage: "linear-gradient(to right, #af795d , #ffffff)",
@@ -530,12 +535,12 @@ const HomePage = () => {
                             </Grid>
                             <Grid item={true} xs={12} md={5}>
                                 <Box>
-                                    <Typography variant="h6" sx={{color: "text.primary", mb: 2}}>
+                                    <Typography variant="h6" sx={{color: "white", mb: 2}}>
                                         Do you want to become a sitter?
                                     </Typography>
                                     <Typography
                                         variant="body2"
-                                        sx={{color: "text.secondary", mb: 2, fontSize: 12}}>
+                                        sx={{color: "white", mb: 2, fontSize: 12}}>
                                         Take care of pets and get paid for it! Choose your scheduler yourself. Learn
                                         more how to join our team of trustful pet-sitters;
                                     </Typography>
@@ -570,9 +575,43 @@ const HomePage = () => {
                         </Typography>
 
                         <Box sx={{mb: 4}}>
-                            <Tabs>
-
-                            </Tabs>
+                            <Stack direction="row" justifyContent="center">
+                                <Tabs
+                                    sx={{mb: 4}}
+                                    variant="standard"
+                                    orientation="horizontal"
+                                    onChange={(event, value) => setActive(value)}
+                                    color={active === "sitter" ? "colors.accent" : "secondary.main"}
+                                    allowScrollButtonsMobile={true}
+                                    visibleScrollbar={true}
+                                    textColor="primary"
+                                    value={active}>
+                                    <Tab
+                                        value="owner"
+                                        label={<Typography sx={{color: "text.primary", textTransform: "capitalize"}}>
+                                            Pet-owner
+                                        </Typography>}
+                                    />
+                                    <Tab
+                                        value="sitter"
+                                        label={<Typography sx={{color: "text.primary", textTransform: "capitalize"}}>
+                                            Pet-sitter
+                                        </Typography>}
+                                    />
+                                </Tabs>
+                            </Stack>
+                            <Stack spacing={2}>
+                                {getFAQsByCategory(active).map((faq, index) => {
+                                    return (
+                                        <Box key={index}>
+                                            <Faq
+                                                faq={faq}
+                                                backgroundColor={active === "sitter" ? "light.primary" : "light.secondary"}
+                                            />
+                                        </Box>
+                                    )
+                                })}
+                            </Stack>
                         </Box>
 
                         <Typography align="center" variant="body2" sx={{fontSize: 12, mb: 1, color: "text.primary"}}>

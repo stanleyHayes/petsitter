@@ -78,42 +78,38 @@ const TabletHeader = () => {
                                 }}
                             />
                             {theme === 'dark' && (
-                                <Box>
-                                    <LightModeOutlined
-                                        sx={{
-                                            borderWidth: 1,
-                                            borderColor: "icon.border",
-                                            borderStyle: "solid",
-                                            backgroundColor: "icon.background",
-                                            fontSize: 32,
-                                            padding: 1,
-                                            color: "icon.secondary",
-                                            borderRadius: "100%",
-                                            cursor: "pointer",
-                                        }}
-                                        onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
-                                    />
-                                </Box>
+                                <LightModeOutlined
+                                    sx={{
+                                        borderWidth: 1,
+                                        borderColor: "icon.border",
+                                        borderStyle: "solid",
+                                        backgroundColor: "icon.background",
+                                        fontSize: 32,
+                                        padding: 1,
+                                        color: "icon.secondary",
+                                        borderRadius: "100%",
+                                        cursor: "pointer",
+                                    }}
+                                    onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
+                                />
                             )}
                             {theme === 'light' && (
-                                <Box>
-                                    <DarkModeOutlined
-                                        sx={{
-                                            borderWidth: 1,
-                                            borderColor: "icon.border",
-                                            borderStyle: "solid",
-                                            backgroundColor: "icon.background",
-                                            fontSize: 32,
-                                            padding: 1,
-                                            color: "icon.secondary",
-                                            borderRadius: "100%",
-                                            cursor: "pointer"
-                                        }}
-                                        onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
-                                    />
-                                </Box>
+                                <DarkModeOutlined
+                                    sx={{
+                                        borderWidth: 1,
+                                        borderColor: "icon.border",
+                                        borderStyle: "solid",
+                                        backgroundColor: "icon.background",
+                                        fontSize: 32,
+                                        padding: 1,
+                                        color: "icon.secondary",
+                                        borderRadius: "100%",
+                                        cursor: "pointer"
+                                    }}
+                                    onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
+                                />
                             )}
-                            <Profile image={<Avatar sx={{width: 30, height: 30}}/>} name="Inigo Lopez" />
+                            <Profile image={<Avatar sx={{width: 30, height: 30}}/>} name="Inigo Lopez"/>
                             <Select sx={{borderRadius: 0.15}} value="EN" variant="outlined" size="small">
                                 <MenuItem value="EN">En</MenuItem>
                                 <MenuItem value="DE">De</MenuItem>

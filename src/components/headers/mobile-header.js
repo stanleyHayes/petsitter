@@ -61,42 +61,38 @@ const MobileHeader = () => {
                                     borderRadius: "100%"
                                 }}
                             />
-                                {theme === 'dark' && (
-                                    <Box>
-                                        <LightModeOutlined
-                                            sx={{
-                                                borderWidth: 1,
-                                                borderColor: "icon.border",
-                                                borderStyle: "solid",
-                                                backgroundColor: "icon.background",
-                                                fontSize: 32,
-                                                padding: 1,
-                                                color: "icon.secondary",
-                                                borderRadius: "100%",
-                                                cursor: "pointer"
-                                            }}
-                                            onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
-                                        />
-                                    </Box>
-                                )}
-                                {theme === 'light' && (
-                                    <Box>
-                                        <DarkModeOutlined
-                                            sx={{
-                                                borderWidth: 1,
-                                                borderColor: "icon.border",
-                                                borderStyle: "solid",
-                                                backgroundColor: "icon.background",
-                                                fontSize: 32,
-                                                padding: 1,
-                                                color: "icon.secondary",
-                                                borderRadius: "100%",
-                                                cursor: "pointer"
-                                            }}
-                                            onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
-                                        />
-                                    </Box>
-                                )}
+                            {theme === 'dark' && (
+                                <LightModeOutlined
+                                    sx={{
+                                        borderWidth: 1,
+                                        borderColor: "icon.border",
+                                        borderStyle: "solid",
+                                        backgroundColor: "icon.background",
+                                        fontSize: 32,
+                                        padding: 1,
+                                        color: "icon.secondary",
+                                        borderRadius: "100%",
+                                        cursor: "pointer"
+                                    }}
+                                    onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
+                                />
+                            )}
+                            {theme === 'light' && (
+                                <DarkModeOutlined
+                                    sx={{
+                                        borderWidth: 1,
+                                        borderColor: "icon.border",
+                                        borderStyle: "solid",
+                                        backgroundColor: "icon.background",
+                                        fontSize: 32,
+                                        padding: 1,
+                                        color: "icon.secondary",
+                                        borderRadius: "100%",
+                                        cursor: "pointer"
+                                    }}
+                                    onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
+                                />
+                            )}
                             <Profile image={<Avatar sx={{width: 30, height: 30}}/>} name="Inigo Lopez"/>
                         </Stack>
                     </Grid>

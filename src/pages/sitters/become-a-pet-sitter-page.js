@@ -1,6 +1,6 @@
 import Layout from "../../components/shared/layout";
-import {Box, Button, Card, CardContent, CardMedia, Container, Grid, Stack, Tabs, Typography} from "@mui/material";
-import banner from "../../assets/images/banner.jpg";
+import {Box, Button, Card, CardContent, CardMedia, Container, Grid, Stack, Tab, Tabs, Typography} from "@mui/material";
+import banner from "../../assets/images/become-sitter-banner.jpg";
 import {Link} from "react-router-dom";
 import {
     ArrowCircleRightRounded,
@@ -14,15 +14,20 @@ import Process from "../../components/shared/process";
 import servicesBackground from "../../assets/images/services-banner.jpg";
 import Service from "../../components/shared/service";
 import cat from "../../assets/images/cat.jpg";
+import {useState} from "react";
+import {getFAQsByCategory} from "../../utils/lib";
+import Faq from "../../components/shared/faq";
 
 const BecomeAPetSitterPage = () => {
+
+    const [active, setActive] = useState("sitter");
 
     return (
         <Layout>
             <Box>
                 <Box
                     sx={{
-                        minHeight: {xs: "100vh"},
+                        minHeight: {xs: "50vh", md: "60vh", lg: "100vh"},
                         borderBottomRightRadius: {xs: 32},
                         borderBottomLeftRadius: {xs: 32},
                         backgroundImage: `url(${banner})`,
@@ -57,7 +62,12 @@ const BecomeAPetSitterPage = () => {
                                     fullWidth={true}
                                     variant="contained"
                                     disableElevation={true}
-                                    sx={{py: 2.5, textTransform: "none", backgroundColor: "colors.accent", borderRadius: 0.35}}>
+                                    sx={{
+                                        py: 2.5,
+                                        textTransform: "none",
+                                        backgroundColor: "colors.accent",
+                                        borderRadius: 0.35
+                                    }}>
                                     Let's get started!
                                 </Button>
                             </Grid>
@@ -299,13 +309,19 @@ const BecomeAPetSitterPage = () => {
                                             align="center"
                                             variant="body2"
                                             sx={{color: "text.secondary", mb: 4, fontSize: 12}}>
-                                            Fill out the form, tell us about yourself, and pass easy test. It will take maximum 15 minutes.
+                                            Fill out the form, tell us about yourself, and pass easy test. It will take
+                                            maximum 15 minutes.
                                         </Typography>
                                         <Button
                                             fullWidth={true}
                                             variant="contained"
                                             disableElevation={true}
-                                            sx={{py: 2.5, textTransform: "none", backgroundColor: "colors.accent", borderRadius: 0.20}}>
+                                            sx={{
+                                                py: 2.5,
+                                                textTransform: "none",
+                                                backgroundColor: "colors.accent",
+                                                borderRadius: 0.20
+                                            }}>
                                             Apply now
                                         </Button>
                                     </CardContent>
@@ -360,9 +376,9 @@ const BecomeAPetSitterPage = () => {
                                 <CardMedia
                                     component="img"
                                     sx={{
-                                        height: {xs: 150, md: "100%"},
-                                        objectFit: "cover",
-                                        width: {xs: 150, md: "100%"},
+                                        height: {xs: 150, md: "100%", lg: 150},
+                                        objectFit: {xs: "cover"},
+                                        width: {xs: 150, md: "100%", lg: 150},
                                         borderWidth: 4,
                                         borderColor: "icon.border",
                                         borderStyle: "solid",
@@ -378,7 +394,6 @@ const BecomeAPetSitterPage = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        textAlign: {xs: "left", md: "center"},
                                         color: "transparent",
                                         fontSize: {xs: 28, md: 44, lg: 60},
                                         backgroundImage: "linear-gradient(to right, #af795d , #ffffff)",
@@ -423,9 +438,41 @@ const BecomeAPetSitterPage = () => {
                         </Typography>
 
                         <Box sx={{mb: 4}}>
-                            <Tabs>
-
-                            </Tabs>
+                            <Stack direction="row" justifyContent="center">
+                                <Tabs
+                                    sx={{mb: 4}}
+                                    variant="standard"
+                                    orientation="horizontal"
+                                    onChange={(event, value) => setActive(value)}
+                                    color={active === "sitter" ? "colors.accent" : "secondary.main"}
+                                    allowScrollButtonsMobile={true}
+                                    visibleScrollbar={true}
+                                    textColor="primary"
+                                    value={active}>
+                                    <Tab
+                                        value="owner"
+                                        label={<Typography sx={{color: "text.primary", textTransform: "capitalize"}}>
+                                            Pet-owner
+                                        </Typography>}/>
+                                    <Tab
+                                        value="sitter"
+                                        label={<Typography sx={{color: "text.primary", textTransform: "capitalize"}}>
+                                            Pet-sitter
+                                        </Typography>}/>
+                                </Tabs>
+                            </Stack>
+                            <Stack spacing={2}>
+                                {getFAQsByCategory(active).map((faq, index) => {
+                                    return (
+                                        <Box key={index}>
+                                            <Faq
+                                                faq={faq}
+                                                backgroundColor={active === "sitter" ? "light.primary" : "light.secondary"}
+                                            />
+                                        </Box>
+                                    )
+                                })}
+                            </Stack>
                         </Box>
 
                         <Typography align="center" variant="body2" sx={{fontSize: 12, mb: 1, color: "text.primary"}}>
