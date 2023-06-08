@@ -1,6 +1,7 @@
 import {Box, Button, Card, CardContent, CardMedia, Grid, Stack, Typography} from "@mui/material";
 import {FavoriteBorderOutlined, RepeatOutlined, ReviewsOutlined, StarOutline, Verified} from "@mui/icons-material";
 import currencyFormatter from "currency-formatter";
+import {Link} from "react-router-dom";
 
 const PetSitter = ({sitter}) => {
     return (
@@ -26,9 +27,13 @@ const PetSitter = ({sitter}) => {
                                 <Stack direction="row" justifyContent="space-between" alignItems="center">
                                     <Box>
                                         <Stack direction="row" spacing={1} alignItems="center">
-                                            <Typography variant="body1" sx={{color: "text.primary"}}>
-                                                {`${sitter.first_name} ${sitter.last_name[0]}.`}
-                                            </Typography>
+                                            <Link to={`/sitters/${sitter._id}`} style={{textDecoration: "none"}}>
+                                                <Typography
+                                                    component="span" variant="body1"
+                                                            sx={{color: "text.primary"}}>
+                                                    {`${sitter.first_name} ${sitter.last_name[0]}.`}
+                                                </Typography>
+                                            </Link>
                                             {sitter.is_verified && (
                                                 <Verified sx={{color: "colors.blue", fontSize: 12}}/>
                                             )}
@@ -44,21 +49,21 @@ const PetSitter = ({sitter}) => {
                             <Box>
                                 <Stack direction="row" spacing={2} alignItems="centerr">
                                     <Button
-                                        sx={{color: "colors.accent", fontSize: 12, textTransform: "none"}}
+                                        sx={{color: "text.primary", fontSize: 12, textTransform: "none"}}
                                         startIcon={<StarOutline sx={{color: "colors.accent"}}/>}
                                         size="small" variant="text">
                                         {sitter.average_rating.toFixed(2)}
                                     </Button>
 
                                     <Button
-                                        sx={{color: "colors.accent", fontSize: 12, textTransform: "none"}}
+                                        sx={{color: "text.primary", fontSize: 12, textTransform: "none"}}
                                         startIcon={<ReviewsOutlined sx={{color: "colors.accent"}}/>}
                                         size="small" variant="text">
                                         {`${sitter.reviews_count} reviews`}
                                     </Button>
 
                                     <Button
-                                        sx={{color: "colors.accent", fontSize: 12, textTransform: "none"}}
+                                        sx={{color: "text.primary", fontSize: 12, textTransform: "none"}}
                                         startIcon={<RepeatOutlined sx={{color: "colors.accent"}}/>}
                                         size="small" variant="text">
                                         {`${sitter.booking_count} orders`}

@@ -48,7 +48,7 @@ const darkTheme = createTheme({
             default: "#000000",
             alternative: "#0b111e",
             paper: "#202020",
-            transparent: "rgba(0,0,0,0.55)",
+            transparent: "rgba(0,0,0,0.1)",
             dark: "#102b53"
         },
         text: {
@@ -68,9 +68,10 @@ const darkTheme = createTheme({
             accent: "rgba(245,115,42,0.3)"
         },
         icon: {
-            border: 'rgba(175,121,93,0.1)',
-            background: 'rgba(175,121,93,0.03)',
-            secondary: '#af795d'
+            border: 'rgba(255,255,255,0.1)',
+            background: 'rgba(255,255,255,0.03)',
+            secondary: '#af795d',
+            color: "rgba(255, 255, 255, 0.95)"
         },
     },
     typography: {

@@ -55,7 +55,7 @@ const DesktopHeader = () => {
                                     backgroundColor: "icon.background",
                                     fontSize: 32,
                                     padding: 1,
-                                    color: "icon.secondary",
+                                    color: "icon.color",
                                     borderRadius: "100%"
                                 }}
                             />
@@ -67,7 +67,7 @@ const DesktopHeader = () => {
                                     backgroundColor: "icon.background",
                                     fontSize: 32,
                                     padding: 1,
-                                    color: "icon.secondary",
+                                    color: "icon.color",
                                     borderRadius: "100%"
                                 }}
                             />
@@ -81,7 +81,7 @@ const DesktopHeader = () => {
                                         backgroundColor: "icon.background",
                                         fontSize: 32,
                                         padding: 1,
-                                        color: "icon.secondary",
+                                        color: "icon.color",
                                         borderRadius: "100%",
                                         cursor: "pointer"
                                     }}
@@ -97,7 +97,7 @@ const DesktopHeader = () => {
                                         backgroundColor: "icon.background",
                                         fontSize: 32,
                                         padding: 1,
-                                        color: "icon.secondary",
+                                        color: "icon.color",
                                         borderRadius: "100%",
                                         cursor: "pointer"
                                     }}

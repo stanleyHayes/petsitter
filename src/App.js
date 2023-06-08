@@ -9,6 +9,7 @@ import {lazy, Suspense} from "react";
 const HomePage  = lazy(() => import("./pages/home/home-page"));
 const BecomePetSitterPage  = lazy(() => import("./pages/sitters/become-a-pet-sitter-page"));
 const FindPetSitterPage  = lazy(() => import("./pages/sitters/find-a-pet-sitter-page"));
+const PetSitterProfilePage  = lazy(() => import("./pages/sitters/sitter-profile-page"));
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/" element={<Suspense fallback={null}><HomePage/></Suspense>}/>
                     <Route path="/find-pet-sitter" element={<Suspense fallback={null}><FindPetSitterPage/></Suspense>}/>
                     <Route path="/become-pet-sitter" element={<Suspense fallback={null}><BecomePetSitterPage/></Suspense>}/>
+                    <Route path="/sitters/:id" element={<Suspense fallback={null}><PetSitterProfilePage/></Suspense>}/>
                 </Routes>
             </CssBaseline>
         </ThemeProvider>

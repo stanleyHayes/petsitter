@@ -19,6 +19,7 @@ const sittersSlice = createSlice({
     name: 'sitters',
     initialState: {
         sitters: [...sitters],
+        sitter: sitters[0],
         loading: false,
         error: null
     },

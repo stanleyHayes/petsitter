@@ -12,11 +12,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectAuth} from "../../redux/features/authentication/authentication-slice";
 
 const MobileHeader = () => {
-
     const dispatch = useDispatch();
     const {theme} = useSelector(selectUI);
     const {data} = useSelector(selectAuth);
-
     return (
         <Toolbar>
                 <Grid container={true} justifyContent="space-between" alignItems="center">

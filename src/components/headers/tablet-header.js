@@ -22,7 +22,7 @@ const TabletHeader = () => {
             <Container maxWidth="xl">
                 <Grid container={true} justifyContent="space-between" alignItems="center">
                     <Grid item={true} xs="auto">
-                        <Stack spacing={2} alignItems="center" direction="row" alignItems="center">
+                        <Stack spacing={2} alignItems="center" direction="row">
                             <MenuOutlined
                                 onClick={() => dispatch(UI_ACTION_CREATORS.toggleDrawer())}
                                 sx={{
@@ -111,7 +111,9 @@ const TabletHeader = () => {
                                     onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
                                 />
                             )}
-                            <Profile image={<Avatar src={data.image.secure_url} sx={{width: 30, height: 30}}/>} name={`${data.first_name} ${data.last_name[0]}.`}/>
+                            <Profile
+                                image={<Avatar src={data.image.secure_url} sx={{width: 30, height: 30}}/>}
+                                name={`${data.first_name} ${data.last_name[0]}.`}/>
                             <Select sx={{borderRadius: 0.25}} value={language} variant="outlined" size="small">
                                 <MenuItem value="EN">En</MenuItem>
                                 <MenuItem value="DE">De</MenuItem>
