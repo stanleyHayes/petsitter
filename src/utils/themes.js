@@ -9,11 +9,11 @@ const lightTheme = createTheme({
             alternative: "#EFE7E2",
             dark: "#102b53",
             paper: "#FFFEFF",
-            transparent: "rgba(255,255,255,0.35)"
+            transparent: "rgba(255,255,255,0.1)"
         },
         text: {
             primary: "#000000",
-            secondary: "#CCCFFF",
+            secondary: "#999999",
             accent: "#f5732a",
             darkPrimary: "#ffffff",
             darkSecondary: "#fefefe"
@@ -48,7 +48,7 @@ const darkTheme = createTheme({
             default: "#000000",
             alternative: "#0b111e",
             paper: "#202020",
-            transparent: "rgba(0,0,0,0.35)",
+            transparent: "rgba(0,0,0,0.55)",
             dark: "#102b53"
         },
         text: {

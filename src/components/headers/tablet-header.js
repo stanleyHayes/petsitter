@@ -1,4 +1,4 @@
-import {Avatar, Box, CardMedia, Container, Grid, MenuItem, Select, Stack, Toolbar} from "@mui/material";
+import {Avatar, CardMedia, Container, Grid, MenuItem, Select, Stack, Toolbar} from "@mui/material";
 import whiteLogo from "./../../assets/images/logo-white.png";
 import coloredLogo from "./../../assets/images/logo-colored.png";
 import {useDispatch, useSelector} from "react-redux";
@@ -11,16 +11,18 @@ import {
     MenuOutlined
 } from "@mui/icons-material";
 import Profile from "../shared/profile";
+import {selectAuth} from "../../redux/features/authentication/authentication-slice";
 
 const TabletHeader = () => {
-    const {theme} = useSelector(selectUI);
+    const {theme, language} = useSelector(selectUI);
+    const {data} = useSelector(selectAuth);
     const dispatch = useDispatch();
     return (
         <Toolbar>
             <Container maxWidth="xl">
                 <Grid container={true} justifyContent="space-between" alignItems="center">
                     <Grid item={true} xs="auto">
-                        <Stack spacing={2} alignItens="center" direction="row" alignItems="center">
+                        <Stack spacing={2} alignItems="center" direction="row" alignItems="center">
                             <MenuOutlined
                                 onClick={() => dispatch(UI_ACTION_CREATORS.toggleDrawer())}
                                 sx={{
@@ -109,8 +111,8 @@ const TabletHeader = () => {
                                     onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
                                 />
                             )}
-                            <Profile image={<Avatar sx={{width: 30, height: 30}}/>} name="Inigo Lopez"/>
-                            <Select sx={{borderRadius: 0.15}} value="EN" variant="outlined" size="small">
+                            <Profile image={<Avatar src={data.image.secure_url} sx={{width: 30, height: 30}}/>} name={`${data.first_name} ${data.last_name[0]}.`}/>
+                            <Select sx={{borderRadius: 0.25}} value={language} variant="outlined" size="small">
                                 <MenuItem value="EN">En</MenuItem>
                                 <MenuItem value="DE">De</MenuItem>
                             </Select>

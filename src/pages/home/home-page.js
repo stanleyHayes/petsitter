@@ -56,7 +56,7 @@ const HomePage = () => {
                         alignItems: "center",
                         justifyContent: "center"
                     }}>
-                    <Container>
+                    <Container maxWidth="xl">
                         <Typography
                             sx={{
                                 backgroundImage: "linear-gradient(to right, #af795d , #ffffff)",

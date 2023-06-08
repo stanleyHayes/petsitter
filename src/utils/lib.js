@@ -5,7 +5,7 @@ const getStorage = (key, defaultValue = null) => {
 }
 
 const setStorage = (key, value) => {
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
 

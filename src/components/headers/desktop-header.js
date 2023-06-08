@@ -1,4 +1,4 @@
-import {Avatar, Box, CardMedia, Container, Grid, MenuItem, Select, Stack, Toolbar} from "@mui/material";
+import {Avatar, CardMedia, Container, Grid, MenuItem, Select, Stack, Toolbar} from "@mui/material";
 import whiteLogo from "./../../assets/images/logo-white.png";
 import coloredLogo from "./../../assets/images/logo-colored.png";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,9 +7,11 @@ import NavbarLink from "../shared/navbar-link";
 import {DarkModeOutlined, FavoriteBorderOutlined, LightModeOutlined, MailOutline} from "@mui/icons-material";
 import Profile from "../shared/profile";
 import {Link} from "react-router-dom";
+import {selectAuth} from "../../redux/features/authentication/authentication-slice";
 
 const DesktopHeader = () => {
-    const {theme} = useSelector(selectUI);
+    const {theme, language} = useSelector(selectUI);
+    const {data} = useSelector(selectAuth);
     const dispatch = useDispatch();
     return (
         <Toolbar>
@@ -89,21 +91,21 @@ const DesktopHeader = () => {
                             {theme === 'light' && (
                                 <DarkModeOutlined
                                     sx={{
-                                        padding: 1,
-                                        fontSize: 32,
                                         borderWidth: 1,
+                                        borderColor: "icon.border",
                                         borderStyle: "solid",
-                                        borderRadius: '30%',
-                                        borderColor: "light.secondary",
-                                        color: "secondary.main",
-                                        backgroundColor: "light.secondary",
+                                        backgroundColor: "icon.background",
+                                        fontSize: 32,
+                                        padding: 1,
+                                        color: "icon.secondary",
+                                        borderRadius: "100%",
                                         cursor: "pointer"
                                     }}
                                     onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
                                 />
                             )}
-                            <Profile image={<Avatar sx={{width: 30, height: 30}}/>} name="Inigo Lopez"/>
-                            <Select sx={{borderRadius: 0.25}} value="EN" variant="outlined" size="small">
+                            <Profile image={<Avatar src={data.image.secure_url} sx={{width: 30, height: 30}}/>} name={`${data.first_name} ${data.last_name[0]}.`}/>
+                            <Select sx={{borderRadius: 0.25}} value={language} variant="outlined" size="small">
                                 <MenuItem value="EN">En</MenuItem>
                                 <MenuItem value="DE">De</MenuItem>
                             </Select>

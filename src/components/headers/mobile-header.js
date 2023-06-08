@@ -1,5 +1,4 @@
-import {Avatar, Box, Container, Grid, Stack, Toolbar} from "@mui/material";
-import NavbarLink from "../shared/navbar-link";
+import {Avatar, Grid, Stack, Toolbar} from "@mui/material";
 import {
     DarkModeOutlined,
     FavoriteBorderOutlined,
@@ -10,15 +9,16 @@ import {
 import Profile from "../shared/profile";
 import {selectUI, UI_ACTION_CREATORS} from "../../redux/features/ui/ui-slice";
 import {useDispatch, useSelector} from "react-redux";
+import {selectAuth} from "../../redux/features/authentication/authentication-slice";
 
 const MobileHeader = () => {
 
     const dispatch = useDispatch();
     const {theme} = useSelector(selectUI);
+    const {data} = useSelector(selectAuth);
 
     return (
         <Toolbar>
-            <Container maxWidth="xl">
                 <Grid container={true} justifyContent="space-between" alignItems="center">
                     <Grid item={true} xs="auto">
                         <MenuOutlined
@@ -93,11 +93,10 @@ const MobileHeader = () => {
                                     onClick={() => dispatch(UI_ACTION_CREATORS.toggleTheme())}
                                 />
                             )}
-                            <Profile image={<Avatar sx={{width: 30, height: 30}}/>} name="Inigo Lopez"/>
+                            <Profile image={<Avatar src={data.image.secure_url} sx={{width: 30, height: 30}}/>}/>
                         </Stack>
                     </Grid>
                 </Grid>
-            </Container>
         </Toolbar>
     )
 }

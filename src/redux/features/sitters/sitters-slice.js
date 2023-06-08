@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import {SITTERS_API} from "../../../api/sitter";
+import {sitters} from "./sitters";
 
 const getSitters = createAsyncThunk(
     'sitters/getSitters',
@@ -17,7 +18,7 @@ const getSitters = createAsyncThunk(
 const sittersSlice = createSlice({
     name: 'sitters',
     initialState: {
-        sitters: [],
+        sitters: [...sitters],
         loading: false,
         error: null
     },
